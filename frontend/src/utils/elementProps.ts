@@ -1,8 +1,9 @@
 import { IInputProp } from "~/components/builder/sidebar/components/property-tab/prop-tab/InputProp";
 import { ISelectPropProps } from "~/components/builder/sidebar/components/property-tab/prop-tab/SelectProp";
 import { breakpoints } from "./constants";
+import { ICheckboxPropProps } from "~/components/builder/sidebar/components/property-tab/prop-tab/CheckboxProp";
 
-type inputType = "input" | "select";
+type inputType = "input" | "select" | "checkbox";
 
 export type inputPropType = {
   type: inputType;
@@ -192,14 +193,51 @@ const elementProps: { [key: string]: inputPropType[] } = {
     {
       type: "select",
       props: {
-        label: "Size mode",
-        description: "Kiểu kích thước",
-        propKey: "sizeMode",
+        label: "Fit",
+        description: "Phù hợp với vùng chứa",
+        propKey: "objectFit",
         selectOptions: [
-          { label: "Tùy chỉnh", value: "dynamic" },
-          { label: "Vừa phần tử cha", value: "fill" },
+          { label: "Mặc định", value: "unset" },
+          { label: "Hiển thị đầy đủ hình ảnh", value: "contain" },
+          { label: "Cắt bớt để vừa với vùng chứa", value: "cover" },
+          { label: "Kéo dãn để vừa với vùng chứa", value: "fill" },
+          { label: "Không thay đổi kích thước", value: "none" },
         ],
-        defaultValue: "dynamic",
+        defaultValue: "unset",
+      } as ISelectPropProps,
+    },
+    {
+      type: "input",
+      props: {
+        propKey: "href",
+        label: "Href",
+        description: "Đường dẫn đến một trang trong website",
+        placeholder: "VD: /khuyen-mai",
+      } as IInputProp,
+    },
+    {
+      type: "input",
+      props: {
+        propKey: "link",
+        label: "Link",
+        description: "Đường dẫn đến một trang ngoài website",
+        placeholder: "VD: https://thangwebdev.click",
+      } as IInputProp,
+    },
+    {
+      type: "select",
+      props: {
+        propKey: "target",
+        description: "Ứng xử khi bấm vào hình ảnh",
+        label: "Target",
+        selectOptions: [
+          { label: "-", value: "" },
+          { label: "Mở liên kết trên tab mới", value: "_blank" },
+          { label: "Mở liên kết trên tab hiện tại", value: "_self" },
+          { label: "Mở liên kết tới tab mở tab hiện tại", value: "_parent" },
+          { label: "Nhảy tới tab hiện tại", value: "_top" },
+        ],
+        defaultValue: "",
       } as ISelectPropProps,
     },
   ],
@@ -262,7 +300,9 @@ const elementProps: { [key: string]: inputPropType[] } = {
       props: {
         propKey: "xsColumns",
         label: "XS Columns",
-        description: "Số lượng cột ở màn hình 0px trở lên",
+        description: `Số lượng cột ở màn hình ${
+          breakpoints.find((item) => item.value === "xs")?.label
+        } trở lên`,
         type: "number",
       } as IInputProp,
     },
@@ -271,7 +311,9 @@ const elementProps: { [key: string]: inputPropType[] } = {
       props: {
         propKey: "smColumns",
         label: "SM Columns",
-        description: "Số lượng cột ở màn hình 528px trở lên",
+        description: `Số lượng cột ở màn hình ${
+          breakpoints.find((item) => item.value === "sm")?.label
+        } trở lên`,
         type: "number",
       } as IInputProp,
     },
@@ -280,7 +322,9 @@ const elementProps: { [key: string]: inputPropType[] } = {
       props: {
         propKey: "mdColumns",
         label: "MD Columns",
-        description: "Số lượng cột ở màn hình 992px trở lên",
+        description: `Số lượng cột ở màn hình ${
+          breakpoints.find((item) => item.value === "md")?.label
+        } trở lên`,
         type: "number",
       } as IInputProp,
     },
@@ -289,7 +333,9 @@ const elementProps: { [key: string]: inputPropType[] } = {
       props: {
         propKey: "lgColumns",
         label: "LG Columns",
-        description: "Số lượng cột ở màn hình 1280px trở lên",
+        description: `Số lượng cột ở màn hình ${
+          breakpoints.find((item) => item.value === "lg")?.label
+        } trở lên`,
         type: "number",
       } as IInputProp,
     },
@@ -298,7 +344,9 @@ const elementProps: { [key: string]: inputPropType[] } = {
       props: {
         propKey: "xlColumns",
         label: "XL Columns",
-        description: "Số lượng cột ở màn hình 1440px trở lên",
+        description: `Số lượng cột ở màn hình ${
+          breakpoints.find((item) => item.value === "xl")?.label
+        } trở lên`,
         type: "number",
       } as IInputProp,
     },
@@ -484,6 +532,82 @@ const elementProps: { [key: string]: inputPropType[] } = {
         selectOptions: breakpointValues,
         defaultValue: "xl",
       } as ISelectPropProps,
+    },
+  ],
+  carousel: [
+    {
+      type: "input",
+      props: {
+        label: "Item height(px)",
+        type: "number",
+        propKey: "itemHeight",
+        description: "Chiều cao mỗi phần tử",
+        placeholder: "VD: 200, 250, 300,...",
+      } as IInputProp,
+    },
+    {
+      type: "input",
+      props: {
+        label: "Items",
+        type: "number",
+        propKey: "slidesPerView",
+        description: "Số lượng phần tử hiển thị",
+        placeholder: "VD: 1, 2, 4,...",
+      } as IInputProp,
+    },
+    {
+      type: "input",
+      props: {
+        label: "Space",
+        type: "number",
+        propKey: "spaceBetween",
+        description: "Khoảng cách giữ các phần tử",
+        placeholder: "VD: 10, 20, 50,...",
+      } as IInputProp,
+    },
+    {
+      type: "checkbox",
+      props: {
+        label: "Loop",
+        propKey: "loop",
+        description: "Lặp lại",
+      } as ICheckboxPropProps,
+    },
+    {
+      type: "checkbox",
+      props: {
+        label: "Auto play",
+        propKey: "autoplay",
+        description: "Tự động chuyển slide",
+      } as ICheckboxPropProps,
+    },
+  ],
+  carouselproduct: [
+    {
+      type: "input",
+      props: {
+        label: "Title",
+        propKey: "title",
+        description: "Tiêu đề của carousel",
+        placeholder: "VD: Sản phẩm giảm giá",
+      } as IInputProp,
+    },
+    {
+      type: "input",
+      props: {
+        label: "Image header",
+        propKey: "imgHeader",
+        description: "Ảnh của carousel (40px x 40px)",
+        placeholder: "VD: https://server.vn/carousel.png",
+      } as IInputProp,
+    },
+    {
+      type: "checkbox",
+      props: {
+        label: "Show header",
+        propKey: "showHeader",
+        description: "Hiển thị header",
+      } as ICheckboxPropProps,
     },
   ],
 };

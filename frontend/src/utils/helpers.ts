@@ -47,6 +47,10 @@ const generateSize = (
     unitMarginLeft,
     marginRight,
     unitMarginRight,
+    borderTopLeftRadius,
+    borderTopRightRadius,
+    borderBottomRightRadius,
+    borderBottomLeftRadius,
   }: {
     width?: string;
     height?: string;
@@ -68,6 +72,10 @@ const generateSize = (
     unitMarginLeft?: string;
     marginRight?: string;
     unitMarginRight?: string;
+    borderTopLeftRadius?: string;
+    borderTopRightRadius?: string;
+    borderBottomRightRadius?: string;
+    borderBottomLeftRadius?: string;
   },
   isBuilding?: boolean
 ) => {
@@ -86,16 +94,33 @@ const generateSize = (
         }${unitPaddingBottom}`
       : "",
     paddingLeft: !!paddingLeft
-      ? `${+paddingLeft >= 10 ? paddingLeft : isBuilding ? 10 : paddingLeft}`
+      ? `${
+          +paddingLeft >= 10 ? paddingLeft : isBuilding ? 10 : paddingLeft
+        }${unitPaddingLeft}`
       : "",
     paddingRight: !!paddingRight
-      ? `${+paddingRight >= 10 ? paddingRight : isBuilding ? 10 : paddingRight}`
+      ? `${
+          +paddingRight >= 10 ? paddingRight : isBuilding ? 10 : paddingRight
+        }${unitPaddingRight}`
       : "",
 
     marginTop: !!marginTop ? `${marginTop}${unitMarginTop}` : "",
     marginBottom: !!marginBottom ? `${marginBottom}${unitMarginBottom}` : "",
     marginLeft: !!marginLeft ? `${marginLeft}${unitMarginLeft}` : "",
     marginRight: !!marginRight ? `${marginRight}${unitMarginRight}` : "",
+
+    borderTopLeftRadius: !!borderTopLeftRadius
+      ? `${borderTopLeftRadius}px`
+      : undefined,
+    borderTopRightRadius: !!borderTopRightRadius
+      ? `${borderTopRightRadius}px`
+      : undefined,
+    borderBottomRightRadius: !!borderBottomRightRadius
+      ? `${borderBottomRightRadius}px`
+      : undefined,
+    borderBottomLeftRadius: !!borderBottomLeftRadius
+      ? `${borderBottomLeftRadius}px`
+      : undefined,
   };
 };
 
@@ -121,6 +146,10 @@ const getSizeProps = (obj: { [key: string]: any }) => {
     unitMarginLeft = "",
     marginRight = "",
     unitMarginRight = "",
+    borderTopLeftRadius = "",
+    borderTopRightRadius = "",
+    borderBottomRightRadius = "",
+    borderBottomLeftRadius = "",
     path,
     ...props
   } = obj;
@@ -146,6 +175,10 @@ const getSizeProps = (obj: { [key: string]: any }) => {
       unitMarginLeft,
       marginRight,
       unitMarginRight,
+      borderTopLeftRadius,
+      borderTopRightRadius,
+      borderBottomRightRadius,
+      borderBottomLeftRadius,
     },
     props,
   };

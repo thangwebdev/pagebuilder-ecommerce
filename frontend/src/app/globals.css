@@ -12,6 +12,7 @@ a {
 }
 ::-webkit-scrollbar {
   width: 6px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background-color: #ededed;
@@ -22,4 +23,20 @@ a {
 }
 .hidden-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* carousel */
+.carousel-pagination-bullet {
+  width: 15px;
+  height: 6px;
+  border-radius: 4px;
+  background-color: #ededed;
+  box-shadow: 0 0 5px 0px #00000055;
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+.carousel-pagination-bullet-active {
+  width: 30px;
+  background-color: currentColor;
+  cursor: default;
 }

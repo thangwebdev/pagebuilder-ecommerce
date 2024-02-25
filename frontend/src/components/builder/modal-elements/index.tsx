@@ -18,7 +18,7 @@ function ModalElements({ open, onClose }: IModalElementsProps) {
       <Box
         sx={{
           width: "80vw",
-          maxWidth: "800px",
+          maxWidth: "1200px",
           height: "80vh",
           overflow: "auto",
         }}

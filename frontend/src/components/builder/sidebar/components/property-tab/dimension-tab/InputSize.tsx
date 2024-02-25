@@ -4,11 +4,11 @@ import Select from "~/components/ui/select";
 
 export interface IInputSizeProps {
   inputValue: string;
-  selectValue: string;
+  selectValue?: string;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onInputBlur: () => void;
-  onSelectChange: (e: SelectChangeEvent<unknown>) => void;
-  selectOptions: { label: string; value: string }[];
+  onSelectChange?: (e: SelectChangeEvent<unknown>) => void;
+  selectOptions?: { label: string; value: string }[];
   disableInput?: boolean;
   disableSelect?: boolean;
   placeholder?: string;
@@ -71,7 +71,7 @@ function InputSize({
           },
           "& fieldset": { border: "none" },
         }}
-        options={selectOptions}
+        options={selectOptions || []}
         value={selectValue}
         onChange={onSelectChange}
         IconComponent={() => null}

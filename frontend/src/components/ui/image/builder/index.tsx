@@ -15,6 +15,8 @@ function ImageBuilder({
   height,
   isContainer,
   alt,
+  link,
+  href,
   ...props
 }: IImageBuilderProps) {
   const { sx, style, ...builderWrapperProps } = useBuilderWrapper({
@@ -23,28 +25,16 @@ function ImageBuilder({
     isContainer,
   });
 
-  if (props.sizeMode === "dynamic") {
-    return (
-      <Box
-        sx={{ ...sx, width: "fit-content", height: "fit-content", padding: 0 }}
-        style={style}
-        {...builderWrapperProps}
-      >
-        <Image src={src} width={width} height={height} alt={alt} {...props} />
-      </Box>
-    );
-  } else {
-    return (
-      <Image
-        src={src}
-        width={width}
-        height={height}
-        alt={alt}
-        {...builderWrapperProps}
-        {...props}
-      />
-    );
-  }
+  return (
+    <Image
+      src={src}
+      width={width}
+      height={height}
+      alt={alt}
+      {...builderWrapperProps}
+      {...props}
+    />
+  );
 }
 
 export default ImageBuilder;

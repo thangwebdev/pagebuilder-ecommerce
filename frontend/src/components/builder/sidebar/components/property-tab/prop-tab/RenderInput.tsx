@@ -4,6 +4,7 @@ import { elementProps } from "~/utils/elementProps";
 import InputProp, { IInputProp } from "./InputProp";
 import SelectProp, { ISelectPropProps } from "./SelectProp";
 import { IBuilderComponentProps } from "~/components/ui/builder-component";
+import CheckboxProp, { ICheckboxPropProps } from "./CheckboxProp";
 
 function RenderInput({ element }: { element: IBuilderComponentProps }) {
   const elementProp = useMemo(() => {
@@ -23,6 +24,12 @@ function RenderInput({ element }: { element: IBuilderComponentProps }) {
                 {el.type === "select" && (
                   <SelectProp
                     {...(el.props as ISelectPropProps)}
+                    element={element}
+                  />
+                )}
+                {el.type === "checkbox" && (
+                  <CheckboxProp
+                    {...(el.props as ICheckboxPropProps)}
                     element={element}
                   />
                 )}

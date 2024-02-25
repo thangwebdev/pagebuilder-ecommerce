@@ -1,4 +1,7 @@
+import { Box, Container } from "@mui/material";
 import RenderComponents from "~/components/ui/RenderComponents";
+import Carousel from "~/components/ui/carousel";
+import CarouselProduct from "~/components/ui/carousel-product";
 
 const getPageData = async (href: string) => {
   const res = await fetch(
@@ -22,7 +25,17 @@ export default async function DinamicPage({
 }: {
   params: { page: string[] };
 }) {
-  const data = await getPageData(params.page.join("/"));
+  // const data = await getPageData(params.page.join("/"));
 
-  return <RenderComponents components={data} />;
+  // return <RenderComponents components={data} />;
+  return (
+    <Box>
+      <Container maxWidth="xl">
+        <Carousel />
+        <Box sx={{ padding: "10px 0" }}>
+          <CarouselProduct title="Discount" />
+        </Box>
+      </Container>
+    </Box>
+  );
 }

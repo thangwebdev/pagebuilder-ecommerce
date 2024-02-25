@@ -21,4 +21,9 @@ export interface IDimension {
   unitMarginLeft?: string;
   marginRight?: string;
   unitMarginRight?: string;
+
+  borderTopLeftRadius?: string;
+  borderTopRightRadius?: string;
+  borderBottomRightRadius?: string;
+  borderBottomLeftRadius?: string;
 }

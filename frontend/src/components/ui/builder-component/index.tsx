@@ -13,6 +13,10 @@ import ColBase from "../colbase";
 import ColBaseBuilder from "../colbase/builder";
 import dynamicRow from "../dynamic-row";
 import DynamicRowBuilder from "../dynamic-row/builder";
+import Carousel from "../carousel";
+import CarouselBuilder from "../carousel/builder";
+import CarouselProduct from "../carousel-product";
+import CarouselProductBuilder from "../carousel-product/builder";
 
 export interface IBuilderComponentProps {
   type: string;
@@ -35,6 +39,8 @@ const components: { [key: string]: React.ElementType } = {
   dynamicrow: dynamicRow,
   colbase: ColBase,
   dynamiccol: ColBase,
+  carousel: Carousel,
+  carouselproduct: CarouselProduct,
 };
 
 const buildingComponents: { [key: string]: React.ElementType } = {
@@ -46,6 +52,8 @@ const buildingComponents: { [key: string]: React.ElementType } = {
   dynamicrow: DynamicRowBuilder,
   colbase: ColBaseBuilder,
   dynamiccol: ColBaseBuilder,
+  carousel: CarouselBuilder,
+  carouselproduct: CarouselProductBuilder,
 };
 
 function BuilderComponent({

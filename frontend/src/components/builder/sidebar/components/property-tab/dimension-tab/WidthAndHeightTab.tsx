@@ -153,7 +153,7 @@ function WidthAndHeightTab({ element }: IWidthAndHeightProps) {
             handleUnitChange(value as string, "height");
           }}
           disableInput={disableHeight.includes(element.type as never)}
-          disableSelect={disableUnitHeight.includes(element.type)}
+          disableSelect={disableUnitHeight.includes(element.type as never)}
         />
       </Stack>
     </Stack>

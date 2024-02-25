@@ -7,10 +7,14 @@ import Main from "~/components/builder/main";
 import Sidebar from "~/components/builder/sidebar";
 import { useParams } from "next/navigation";
 import { useBuilderContext } from "~/contexts/BuilderProvider";
+import Preview from "~/components/builder/preview";
 
 function BuilderPage() {
   const param = useParams();
-  const { handleUpdateValues } = useBuilderContext();
+  const {
+    value: { viewMode },
+    handleUpdateValues,
+  } = useBuilderContext();
 
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -57,14 +61,18 @@ function BuilderPage() {
     <Box>
       <Header />
       <Box sx={{ height: "calc(100vh - 50px)" }}>
-        <Grid container>
-          <Grid item xs={12} md={8.5} lg={9}>
-            <Main />
+        {viewMode === "builder" ? (
+          <Grid container>
+            <Grid item xs={12} md={8.5} lg={9}>
+              <Main />
+            </Grid>
+            <Grid item xs={12} md={3.5} lg={3}>
+              <Sidebar />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={3.5} lg={3}>
-            <Sidebar />
-          </Grid>
-        </Grid>
+        ) : (
+          <Preview />
+        )}
       </Box>
     </Box>
   );

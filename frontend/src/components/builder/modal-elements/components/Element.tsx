@@ -90,7 +90,9 @@ function Element({ data }: { data: ElementType }) {
         <Box sx={{ color: "primary.main" }}>
           <data.icon size={24} />
         </Box>
-        <Typography sx={{ fontSize: "12px" }}>{data.name}</Typography>
+        <Typography sx={{ fontSize: "12px", textAlign: "center" }}>
+          {data.name}
+        </Typography>
       </Stack>
     </Box>
   );

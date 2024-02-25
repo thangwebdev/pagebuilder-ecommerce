@@ -282,6 +282,7 @@ function Main({}: IMainProps) {
       const activeElement = builderRef.current.querySelector(
         `#${builderActivePath}`
       );
+
       if (!activeElement) return;
       const bounding = activeElement.getBoundingClientRect();
 
@@ -292,7 +293,7 @@ function Main({}: IMainProps) {
 
       const wrapper: SxProps = {
         position: "absolute",
-        zIndex: 10,
+        zIndex: 100,
         top,
         left,
         width: bounding.width,

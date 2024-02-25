@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
-import { TbContainer } from "react-icons/tb";
+import { TbContainer, TbCarouselHorizontal } from "react-icons/tb";
+import { BiCarousel } from "react-icons/bi";
 import { IoImageOutline } from "react-icons/io5";
 import { CiTextAlignJustify, CiGrid2V, CiGrid31 } from "react-icons/ci";
 import { RxButton } from "react-icons/rx";
@@ -13,6 +14,8 @@ import { IBuilderComponentProps } from "~/components/ui/builder-component";
 import { SPLIT_SYMBOL } from "./constants";
 import { IColBaseProps } from "~/components/ui/colbase";
 import { IDynamicRowProps } from "~/components/ui/dynamic-row";
+import { ICarouselProps } from "~/components/ui/carousel";
+import { ICarouselProductProps } from "~/components/ui/carousel-product";
 
 export type ElementType = {
   id: string;
@@ -145,11 +148,9 @@ export const elementGroups: GroupElementType[] = [
         displayName: "Hình ảnh",
         icon: IoImageOutline,
         defaultProps: {
-          src: "/images/draganddrop.png",
+          src: "/images/draganddrop.jpg",
           width: "100",
-          height: "100",
-          unitWidth: "px",
-          unitHeight: "px",
+          unitWidth: "%",
           alt: "image",
           isContainer: false,
           paddingTop: "0",
@@ -186,6 +187,57 @@ export const elementGroups: GroupElementType[] = [
           isContainer: false,
           sx: {},
         } as IButtonProps,
+      },
+      {
+        id: "carousel",
+        name: "Carousel",
+        displayName: "Carousel",
+        icon: BiCarousel,
+        defaultProps: {
+          width: "100",
+          unitWidth: "%",
+          isContainer: true,
+          loop: true,
+          wrapperProps: { sx: {} },
+        } as ICarouselProps,
+        generateComponents(parentPath: string) {
+          const randomId1 = `el${generateRandomString(8)}`;
+          const randomId2 = `el${generateRandomString(8)}`;
+
+          const slide1 = {
+            path: `${parentPath}${SPLIT_SYMBOL}${randomId1}`,
+            type: "image",
+            uniqueId: randomId1,
+            propData: {
+              src: "/images/draganddrop.jpg",
+              alt: "image carousel",
+            } as IImageProps,
+          } as IBuilderComponentProps;
+          const slide2 = {
+            path: `${parentPath}${SPLIT_SYMBOL}${randomId2}`,
+            type: "image",
+            uniqueId: randomId2,
+            propData: {
+              src: "/images/draganddrop.jpg",
+              alt: "image carousel",
+            } as IImageProps,
+          } as IBuilderComponentProps;
+
+          this.defaultProps.components = [slide1, slide2];
+        },
+      },
+      {
+        id: "carouselproduct",
+        name: "Carousel Sản phẩm",
+        displayName: "Carousel Sản phẩm",
+        icon: TbCarouselHorizontal,
+        defaultProps: {
+          width: "100",
+          unitWidth: "%",
+          title: "Carousel product",
+          showHeader: true,
+          isContainer: false,
+        } as ICarouselProductProps,
       },
     ],
   },

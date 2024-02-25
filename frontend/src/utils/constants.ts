@@ -11,35 +11,35 @@ export const breakpoints: {
     breakpoint: 0,
   },
   {
-    label: "528px",
+    label: "600px",
     value: "sm",
-    breakpoint: 528,
+    breakpoint: 600,
   },
   {
-    label: "992px",
+    label: "900px",
     value: "md",
-    breakpoint: 992,
+    breakpoint: 900,
   },
   {
-    label: "1280px",
+    label: "1200px",
     value: "lg",
-    breakpoint: 1280,
+    breakpoint: 1200,
   },
   {
-    label: "1440px",
+    label: "1536px",
     value: "xl",
-    breakpoint: 1440,
+    breakpoint: 1536,
   },
 ];
 
 // size
 export const disableWidth = ["colbase"];
 
-export const disableHeight = ["colbase"];
+export const disableHeight = [];
 
-export const disableUnitWidth = ["image", "colbase"];
+export const disableUnitWidth = ["colbase"];
 
-export const disableUnitHeight = ["image", "colbase"];
+export const disableUnitHeight = [];
 
 export const disablePaddingTop = ["image"];
 
@@ -49,10 +49,10 @@ export const disablePaddingLeft = ["image", "container"];
 
 export const disablePaddingRight = ["image", "container"];
 
-export const disableMarginLeft = ["container", "image", "colbase"];
+export const disableMarginLeft = ["container", "colbase"];
 
-export const disableMarginRight = ["container", "image", "colbase"];
+export const disableMarginRight = ["container", "colbase"];
 
-export const disableMarginTop = ["image", "colbase"];
+export const disableMarginTop = ["colbase"];
 
-export const disableMarginBottom = ["image", "colbase"];
+export const disableMarginBottom = ["colbase"];

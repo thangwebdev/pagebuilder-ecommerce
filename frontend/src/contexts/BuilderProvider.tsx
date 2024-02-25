@@ -2,7 +2,6 @@
 import { cloneDeep } from "lodash";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import ModalElements from "~/components/builder/modal-elements";
-import ModalPreview from "~/components/builder/modal-preview";
 import { IBuilderComponentProps } from "~/components/ui/builder-component";
 import { SPLIT_SYMBOL } from "~/utils/constants";
 import { generateRandomString } from "~/utils/helpers";
@@ -14,18 +13,19 @@ type KeyType =
   | "builderActivePath"
   | "actions"
   | "openModal"
-  | "openPreview"
   | "load"
   | "activePath"
   | "builderActiveEl"
   | "storePageData"
-  | "indexPageData";
+  | "indexPageData"
+  | "viewMode";
 
 type pageDataType = {
   name: string;
   href: string;
   elements: IBuilderComponentProps[];
 };
+export type ViewModeType = "builder" | "pc" | "tablet" | "mobile";
 
 type BuilderContextValue = {
   builderActivePath: string | undefined;
@@ -37,7 +37,7 @@ type BuilderContextValue = {
     delete: boolean;
   };
   openModal: boolean;
-  openPreview: boolean;
+  viewMode: ViewModeType;
   load: number;
   storePageData: pageDataType[];
   indexPageData: number;
@@ -84,9 +84,10 @@ function BuilderProvider({ children }: { children: React.ReactNode }) {
     },
     // open modal element
     openModal: false,
-    openPreview: false,
     // cờ để làm mới trang
     load: 0,
+    // chế độ hiển thị
+    viewMode: "builder",
     // lưu lại con trỏ để undo hoặc redo
     storePageData: [],
     indexPageData: 0,
@@ -311,7 +312,6 @@ function BuilderProvider({ children }: { children: React.ReactNode }) {
   return (
     <BuilderContext.Provider value={valueToPass}>
       <ModalElements open={value.openModal} onClose={handleCloseModal} />
-      <ModalPreview />
       {children}
     </BuilderContext.Provider>
   );

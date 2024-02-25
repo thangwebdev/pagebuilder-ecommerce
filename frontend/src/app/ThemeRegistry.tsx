@@ -3,6 +3,7 @@ import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import NextAppDirEmotionCacheProvider from "./EmotionCache";
 import { breakpoints } from "~/utils/constants";
+import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -30,7 +31,9 @@ const theme = createTheme({
       main: "#4CB9E7",
     },
     error: {
-      main: "#BE3144",
+      main: "#ec001f",
+      "100": "#ec001f33",
+      "200": "#ec001f55",
     },
     success: {
       main: "#65B741",
@@ -150,10 +153,7 @@ export default function ThemeRegistry({
 }) {
   return (
     <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </NextAppDirEmotionCacheProvider>
   );
 }

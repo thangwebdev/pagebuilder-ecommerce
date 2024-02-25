@@ -5,7 +5,7 @@ import Devices from "./components/Devices";
 import RedoUndo from "./components/RedoUndo";
 import PageName from "./components/PageName";
 import Publish from "./components/Publish";
-import { VscClearAll, VscPreview } from "react-icons/vsc";
+import { VscClearAll } from "react-icons/vsc";
 import Box from "@mui/material/Box";
 import { IconButton } from "@mui/material";
 import { useBuilderContext } from "~/contexts/BuilderProvider";
@@ -14,7 +14,6 @@ import { cloneDeep } from "lodash";
 export default function Header() {
   const {
     value: { storePageData, indexPageData },
-    handleUpdateValue,
     handleUpdateValues,
   } = useBuilderContext();
 
@@ -67,7 +66,7 @@ export default function Header() {
           {/* Name and href */}
           <PageName />
           {/* Devices */}
-          {/* <Devices /> */}
+          <Devices />
           {/* Actions */}
           <Stack direction="row" spacing="10px">
             {/* redo and undo */}
@@ -79,15 +78,6 @@ export default function Header() {
                 onClick={handleClearPage}
               >
                 <VscClearAll size={16} />
-              </IconButton>
-            </Tooltip>
-            {/* Preview */}
-            <Tooltip title="Xem trước" placement="bottom" arrow>
-              <IconButton
-                sx={{ borderRadius: "4px", backgroundColor: "divider" }}
-                onClick={() => handleUpdateValue("openPreview", true)}
-              >
-                <VscPreview size={16} />
               </IconButton>
             </Tooltip>
             {/* Publish */}
