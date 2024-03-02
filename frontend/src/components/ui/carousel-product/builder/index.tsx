@@ -49,13 +49,19 @@ function CarouselProductBuilder({
         >
           <Stack direction="row" alignItems="center" spacing="10px">
             {imgHeader && (
-              <Image src={imgHeader} alt="image" width={"40"} height={"40"} />
+              <Image
+                src={imgHeader}
+                alt="image"
+                width={"30"}
+                unitWidth="px"
+                height={"40"}
+              />
             )}
             {title && (
               <Typography
                 variant="h3"
-                fontWeight={600}
-                fontSize={24}
+                fontWeight={500}
+                fontSize={20}
                 sx={{ color: "secondary.main", textTransform: "capitalize" }}
               >
                 {title}
@@ -69,7 +75,7 @@ function CarouselProductBuilder({
             sx={{ color: "primary.main" }}
           >
             <Typography
-              fontSize={18}
+              fontSize={16}
               fontWeight={500}
               sx={{ color: "primary.main" }}
             >

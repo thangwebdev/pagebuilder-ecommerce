@@ -26,4 +26,7 @@ export interface IDimension {
   borderTopRightRadius?: string;
   borderBottomRightRadius?: string;
   borderBottomLeftRadius?: string;
+
+  textColor?: string;
+  backgroundColor?: string;
 }

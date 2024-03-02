@@ -264,7 +264,7 @@ const useBuilderWrapper = ({
       padding: "10px",
       cursor: "pointer",
       border: "1px dashed",
-      borderColor: isDragging ? "primary.main" : "grey.100",
+      borderColor: isDragging ? "primary.main" : "grey.200",
       position: "relative",
       ...overStyle,
       ...sx,

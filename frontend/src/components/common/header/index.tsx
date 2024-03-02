@@ -1,14 +1,12 @@
-import HeaderNavigate from "./header-navigate";
-import HeaderMain from "./header-main";
 import Box from "@mui/material/Box";
-import Menu from "./menu";
+import TopImage from "./top-image";
+import HeaderMain from "./header-main";
 
 export default function Header() {
   return (
-    <Box component="header">
-      <HeaderNavigate />
+    <>
+      <TopImage />
       <HeaderMain />
-      <Menu />
-    </Box>
+    </>
   );
 }

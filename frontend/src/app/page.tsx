@@ -1,5 +1,10 @@
 import { redirect } from "next/navigation";
 
-export default function index() {
-  return redirect("/home");
+const getFirstUrl = async () => {
+  return "/home";
+};
+
+export default async function index() {
+  const firstUrl = await getFirstUrl();
+  return redirect(firstUrl);
 }

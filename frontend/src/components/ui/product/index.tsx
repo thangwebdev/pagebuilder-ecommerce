@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Link from "next/link";
 import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import { LuMinus, LuPlus, LuShoppingCart } from "react-icons/lu";
 import Image from "next/image";
 
@@ -58,7 +57,7 @@ function Product({ name = "Product name" }: IProductProps) {
           {/* Image */}
           <Box sx={{ paddingTop: "100%", position: "relative", zIndex: 1 }}>
             <Image
-              src="/images/product.png"
+              src="/images/product_thumbnail.svg"
               alt="product-image"
               width={`${100}`}
               height={`${100}`}

@@ -29,8 +29,8 @@ function PageName() {
   };
 
   return (
-    <Stack alignItems="flex-start">
-      <Stack direction="row" alignItems="center">
+    <Stack alignItems="flex-start" sx={{ flex: 1 }}>
+      <Stack direction="row" alignItems="center" spacing="5px">
         <Typography sx={{ fontSize: "13px" }}>Tên trang:</Typography>
         <Box sx={{ display: "inline-block" }}>
           <Box
@@ -44,6 +44,9 @@ function PageName() {
               outline: "none",
               border: "2px solid transparent",
               borderRadius: "2px",
+              maxWidth: "200px",
+              textWrap: "nowrap",
+              overflow: "hidden",
               "&:focus": {
                 borderColor: "primary.main",
               },
@@ -52,7 +55,7 @@ function PageName() {
           ></Box>
         </Box>
       </Stack>
-      <Stack direction="row" alignItems="center">
+      <Stack direction="row" alignItems="center" spacing="5px">
         <Typography sx={{ fontSize: "13px" }}>Đường dẫn:</Typography>
         <Box
           dangerouslySetInnerHTML={{ __html: currentPageData?.href }}

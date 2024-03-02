@@ -16,6 +16,7 @@ import { IColBaseProps } from "~/components/ui/colbase";
 import { IDynamicRowProps } from "~/components/ui/dynamic-row";
 import { ICarouselProps } from "~/components/ui/carousel";
 import { ICarouselProductProps } from "~/components/ui/carousel-product";
+import { FaRegSquare } from "react-icons/fa6";
 
 export type ElementType = {
   id: string;
@@ -119,6 +120,8 @@ export const elementGroups: GroupElementType[] = [
               sx: {},
               direction: "column",
               isContainer: true,
+              width: "50",
+              unitWidth: "%",
               components: [],
             } as IColBaseProps,
           } as IBuilderComponentProps;
@@ -130,12 +133,27 @@ export const elementGroups: GroupElementType[] = [
               sx: {},
               direction: "column",
               isContainer: true,
+              width: "50",
+              unitWidth: "%",
               components: [],
             } as IColBaseProps,
           } as IBuilderComponentProps;
 
           this.defaultProps.components = [col1, col2];
         },
+      },
+      {
+        id: "area",
+        name: "Vùng chứa",
+        displayName: "Vùng chứa",
+        icon: FaRegSquare,
+        defaultProps: {
+          direction: "row",
+          width: "100",
+          unitWidth: "%",
+          isContainer: true,
+          components: [],
+        } as IColBaseProps,
       },
     ],
   },
@@ -150,8 +168,11 @@ export const elementGroups: GroupElementType[] = [
         defaultProps: {
           src: "/images/draganddrop.jpg",
           width: "100",
-          unitWidth: "%",
+          unitWidth: "px",
+          height: "100",
+          unitHeight: "px",
           alt: "image",
+          objectFit: "cover",
           isContainer: false,
           paddingTop: "0",
           paddingBottom: "0",
@@ -211,6 +232,11 @@ export const elementGroups: GroupElementType[] = [
             propData: {
               src: "/images/draganddrop.jpg",
               alt: "image carousel",
+              width: "100",
+              unitWidth: "%",
+              height: "250",
+              unitHeight: "px",
+              objectFit: "cover",
             } as IImageProps,
           } as IBuilderComponentProps;
           const slide2 = {
@@ -220,6 +246,11 @@ export const elementGroups: GroupElementType[] = [
             propData: {
               src: "/images/draganddrop.jpg",
               alt: "image carousel",
+              width: "100",
+              unitWidth: "%",
+              height: "250",
+              unitHeight: "px",
+              objectFit: "cover",
             } as IImageProps,
           } as IBuilderComponentProps;
 
@@ -234,7 +265,8 @@ export const elementGroups: GroupElementType[] = [
         defaultProps: {
           width: "100",
           unitWidth: "%",
-          title: "Carousel product",
+          title: "Carousel sản phẩm",
+          imgHeader: "/images/carousel-product.svg",
           showHeader: true,
           isContainer: false,
         } as ICarouselProductProps,

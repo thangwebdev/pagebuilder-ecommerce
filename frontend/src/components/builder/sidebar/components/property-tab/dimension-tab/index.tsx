@@ -5,6 +5,7 @@ import PaddingTab from "./PaddingTab";
 import MarginTab from "./MarginTab";
 import { IBuilderComponentProps } from "~/components/ui/builder-component";
 import BorderRadiusTab from "./BorderRadiusTab";
+import ColorTab from "./ColorTab";
 
 function DimensionTab({ element }: { element: IBuilderComponentProps }) {
   return (
@@ -18,6 +19,12 @@ function DimensionTab({ element }: { element: IBuilderComponentProps }) {
       <Collapse title="Kích thước">
         <Box sx={{ padding: "0px 5px 5px 5px" }}>
           <WidthAndHeightTab element={element} />
+        </Box>
+      </Collapse>
+      <Divider />
+      <Collapse title="Màu sắc">
+        <Box sx={{ padding: "0px 5px 5px 5px" }}>
+          <ColorTab element={element} />
         </Box>
       </Collapse>
       <Divider />

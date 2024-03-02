@@ -2,6 +2,7 @@
 import { Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import RenderComponents from "~/components/ui/RenderComponents";
+import Box from "@mui/material/Box";
 
 export default function PreviewPage() {
   const searchParams = useSearchParams();
@@ -13,6 +14,11 @@ export default function PreviewPage() {
       </Typography>
     );
   }
+  const pageData = JSON.parse(elements);
 
-  return <RenderComponents components={JSON.parse(elements)} />;
+  return (
+    <Box sx={{ backgroundColor: "grey.100" }}>
+      <RenderComponents components={pageData} />
+    </Box>
+  );
 }

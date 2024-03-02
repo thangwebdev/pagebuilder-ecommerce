@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, useMemo } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { Box, BoxProps } from "@mui/material";
 import dynamic from "next/dynamic";
 import { IDimension } from "~/types";
@@ -20,7 +20,6 @@ type omitType =
 
 export interface IColBaseProps extends Omit<BoxProps, omitType>, IDimension {
   components?: any[];
-  orderIds?: string[];
   direction?: "row" | "column";
   spacing?: string;
   isBuilding?: boolean;
@@ -30,7 +29,6 @@ function ColBase(
   {
     children,
     components,
-    orderIds,
     sx,
     direction,
     spacing,

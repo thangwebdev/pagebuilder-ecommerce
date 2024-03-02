@@ -3,7 +3,6 @@ import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import NextAppDirEmotionCacheProvider from "./EmotionCache";
 import { breakpoints } from "~/utils/constants";
-import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -31,9 +30,9 @@ const theme = createTheme({
       main: "#4CB9E7",
     },
     error: {
-      main: "#ec001f",
-      "100": "#ec001f33",
-      "200": "#ec001f55",
+      main: "#EC001F",
+      "100": "#EC001F33",
+      "200": "#EC001F55",
     },
     success: {
       main: "#65B741",
@@ -41,7 +40,7 @@ const theme = createTheme({
     warning: {
       main: "#F6D776",
     },
-    grey: { "100": "#bdbdbd" },
+    grey: { "100": "#f8f8f8", "200": "#bdbdbd" },
   },
   typography: {
     button: {

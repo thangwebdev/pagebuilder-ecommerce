@@ -1,6 +1,6 @@
 "use client";
 import { cloneDeep } from "lodash";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import ModalElements from "~/components/builder/modal-elements";
 import { IBuilderComponentProps } from "~/components/ui/builder-component";
 import { SPLIT_SYMBOL } from "~/utils/constants";
@@ -49,6 +49,10 @@ type ValuePassType = {
   // funcs
   handleUpdateValue: (key: KeyType, newValue: any) => void;
   handleUpdateValues: (objValue: Partial<BuilderContextValue>) => void;
+  handleUpdateElement: (obj: {
+    path: string;
+    objectUpdate: { [key: string]: any };
+  }) => void;
   findElementByPath: (
     elements: IBuilderComponentProps[],
     path: string
@@ -98,6 +102,30 @@ function BuilderProvider({ children }: { children: React.ReactNode }) {
   };
   const handleUpdateValues = (objValue: Partial<BuilderContextValue>) => {
     setValue({ ...value, ...objValue });
+  };
+  const handleUpdateElement = ({
+    path,
+    objectUpdate,
+  }: {
+    path: string;
+    objectUpdate: { [key: string]: any };
+  }) => {
+    const { storePageData, indexPageData } = value;
+    const pageData = storePageData[indexPageData];
+    const pageDataClone = cloneDeep(pageData);
+    const currentElement = findElementByPath(pageDataClone.elements, path);
+
+    for (let key in objectUpdate) {
+      currentElement.propData[key] = objectUpdate[key];
+    }
+
+    // currentElement.propData = { ...currentElement.propData, ...value };
+
+    const newStorePageData = [...storePageData, pageDataClone];
+    handleUpdateValues({
+      storePageData: newStorePageData,
+      indexPageData: newStorePageData.length - 1,
+    });
   };
 
   // find element by path
@@ -300,6 +328,7 @@ function BuilderProvider({ children }: { children: React.ReactNode }) {
     value,
     handleUpdateValue,
     handleUpdateValues,
+    handleUpdateElement,
     findElementByPath,
     findParentByPath,
     handleDeleteElement,

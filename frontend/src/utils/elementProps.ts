@@ -2,8 +2,9 @@ import { IInputProp } from "~/components/builder/sidebar/components/property-tab
 import { ISelectPropProps } from "~/components/builder/sidebar/components/property-tab/prop-tab/SelectProp";
 import { breakpoints } from "./constants";
 import { ICheckboxPropProps } from "~/components/builder/sidebar/components/property-tab/prop-tab/CheckboxProp";
+import { IChooseFileProp } from "~/components/builder/sidebar/components/property-tab/prop-tab/ChooseFileProp";
 
-type inputType = "input" | "select" | "checkbox";
+type inputType = "input" | "select" | "checkbox" | "choosefile";
 
 export type inputPropType = {
   type: inputType;
@@ -171,14 +172,13 @@ const elementProps: { [key: string]: inputPropType[] } = {
   ],
   image: [
     {
-      type: "input",
+      type: "choosefile",
       props: {
+        propKey: "src",
         label: "Source",
         description: "Đường dẫn hình ảnh",
-        propKey: "src",
-        placeholder: "https://server.vn/image.png",
-        type: "text",
-      } as IInputProp,
+        accept: "image/*",
+      } as IChooseFileProp,
     },
     {
       type: "input",
@@ -464,6 +464,64 @@ const elementProps: { [key: string]: inputPropType[] } = {
       } as IInputProp,
     },
   ],
+  area: [
+    {
+      type: "select",
+      props: {
+        label: "Direction",
+        description: "Hướng hiển thị phần tử con",
+        propKey: "direction",
+        selectOptions: [
+          { label: "Dọc", value: "column" },
+          { label: "Ngang", value: "row" },
+        ],
+        defaultValue: "column",
+      } as ISelectPropProps,
+    },
+    {
+      type: "select",
+      props: {
+        label: "Justify content",
+        description: "Căn chỉnh nội dung theo direction",
+        propKey: "justifyContent",
+        selectOptions: [
+          { label: "Mặc định", value: "" },
+          { label: "Nằm ở đầu", value: "flex-start" },
+          { label: "Nằm ở cuối", value: "flex-end" },
+          { label: "Nằm chính giữa", value: "center" },
+          { label: "Căn đều khoảng trống ở giữa", value: "space-between" },
+          { label: "Căn đều khoảng trống xung quanh", value: "space-around" },
+          { label: "Căn đều bao gồm phần đầu và cuối", value: "space-evenly" },
+        ],
+        defaultValue: "",
+      } as ISelectPropProps,
+    },
+    {
+      type: "select",
+      props: {
+        label: "Align items",
+        description: "Căn chỉnh hàng theo hướng vuông góc với direction",
+        propKey: "alignItems",
+        selectOptions: [
+          { label: "Mặc định", value: "" },
+          { label: "Căn ở đầu", value: "flex-start" },
+          { label: "Căn ở cuối", value: "flex-end" },
+          { label: "Căn chính giữa", value: "center" },
+        ],
+        defaultValue: "",
+      } as ISelectPropProps,
+    },
+    {
+      type: "input",
+      props: {
+        type: "number",
+        label: "Spacing (px)",
+        description: "Khoảng cách giữa các phần tử",
+        propKey: "spacing",
+        placeholder: "VD: 10",
+      } as IInputProp,
+    },
+  ],
   dynamiccol: [
     {
       type: "select",
@@ -593,13 +651,13 @@ const elementProps: { [key: string]: inputPropType[] } = {
       } as IInputProp,
     },
     {
-      type: "input",
+      type: "choosefile",
       props: {
         label: "Image header",
         propKey: "imgHeader",
-        description: "Ảnh của carousel (40px x 40px)",
-        placeholder: "VD: https://server.vn/carousel.png",
-      } as IInputProp,
+        description: "Ảnh của carousel (30px x 30px)",
+        accept: "image/*",
+      } as IChooseFileProp,
     },
     {
       type: "checkbox",

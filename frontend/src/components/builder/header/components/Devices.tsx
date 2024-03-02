@@ -22,62 +22,65 @@ const activeStyle = {
 export default function Devices() {
   const {
     value: { viewMode },
-    handleUpdateValue,
+    handleUpdateValues,
   } = useBuilderContext();
 
   const handleChangeViewMode = (value: ViewModeType) => {
-    handleUpdateValue("viewMode", value);
+    handleUpdateValues({ viewMode: value, builderActivePath: "" });
   };
 
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing="5px"
-      sx={{
-        padding: "5px",
-        backgroundColor: "primary.200",
-        borderRadius: "4px",
-      }}
-    >
-      <Tooltip arrow placement="bottom" title="Dựng trang">
-        <IconButton
-          sx={
-            viewMode === "builder"
-              ? activeStyle
-              : {
-                  borderRadius: "4px",
-                }
-          }
-          onClick={() => handleChangeViewMode("builder")}
-        >
-          <SiPolywork size={14} />
-        </IconButton>
-      </Tooltip>
-      <Box
-        sx={{ width: "2px", height: "30px", backgroundColor: "grey.100" }}
-      ></Box>
-      {devices.map((device) => (
-        <Tooltip
-          key={device.value}
-          arrow
-          placement="bottom"
-          title={device.title}
-        >
+    <Stack direction="row" justifyContent="center" sx={{ flex: 1 }}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing="5px"
+        sx={{
+          padding: "5px",
+          backgroundColor: "primary.200",
+          borderRadius: "4px",
+          width: "fit-content",
+        }}
+      >
+        <Tooltip arrow placement="bottom" title="Dựng trang">
           <IconButton
             sx={
-              viewMode === device.value
+              viewMode === "builder"
                 ? activeStyle
                 : {
                     borderRadius: "4px",
                   }
             }
-            onClick={() => handleChangeViewMode(device.value)}
+            onClick={() => handleChangeViewMode("builder")}
           >
-            <device.icon size={14} />
+            <SiPolywork size={14} />
           </IconButton>
         </Tooltip>
-      ))}
+        <Box
+          sx={{ width: "1px", height: "30px", backgroundColor: "grey.200" }}
+        ></Box>
+        {devices.map((device) => (
+          <Tooltip
+            key={device.value}
+            arrow
+            placement="bottom"
+            title={device.title}
+          >
+            <IconButton
+              sx={
+                viewMode === device.value
+                  ? activeStyle
+                  : {
+                      borderRadius: "4px",
+                    }
+              }
+              onClick={() => handleChangeViewMode(device.value)}
+            >
+              <device.icon size={14} />
+            </IconButton>
+          </Tooltip>
+        ))}
+      </Stack>
     </Stack>
   );
 }

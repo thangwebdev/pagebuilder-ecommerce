@@ -386,7 +386,7 @@ function Main({}: IMainProps) {
               height: "calc(100vh - 50px - 10px)",
               borderRadius: "10px",
               border: "2px dashed",
-              borderColor: "grey.100",
+              borderColor: "grey.200",
             }}
           >
             <Box

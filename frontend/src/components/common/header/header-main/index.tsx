@@ -1,33 +1,30 @@
-import Image from "next/image";
-import HeaderSearch from "./header-search";
-import HeaderRight from "./header-right";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
-import Container from "~/components/ui/container";
-import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
+import HeaderTop from "./header-top";
+import HeaderNav from "./header-nav";
 
-export default function HeaderMain() {
+export interface IHeaderMainProps {}
+
+function HeaderMain({}: IHeaderMainProps) {
+  const theme = useTheme();
+  const mdMatch = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
-    <Box sx={{ height: "50px", padding: "5px 0" }}>
-      <Container maxWidth="xl" sx={{ height: "100%" }}>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ width: "100%", height: "100%" }}
-        >
-          <Box>
-            <Image
-              src="/images/logo.svg"
-              alt="Logo"
-              width={1}
-              height={1}
-              style={{ width: "auto", height: "auto" }}
-            />
-          </Box>
-          <HeaderSearch />
-          <HeaderRight />
-        </Stack>
-      </Container>
+    <Box
+      sx={{
+        position: "sticky",
+        zIndex: 1000,
+        top: 0,
+        width: "100%",
+      }}
+    >
+      <HeaderTop />
+      {mdMatch && <HeaderNav />}
     </Box>
   );
 }
+
+export default HeaderMain;

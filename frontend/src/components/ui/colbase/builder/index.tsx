@@ -20,7 +20,6 @@ function ColBaseBuilder({
   isContainer,
   path,
   sx,
-  orderIds,
   components,
   children,
   ...props

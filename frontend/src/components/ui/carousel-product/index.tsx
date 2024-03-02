@@ -10,10 +10,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import { Autoplay, Navigation } from "swiper/modules";
 import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { IDimension } from "~/types";
-import { getSizeProps, generateSize } from "~/utils/helpers";
+import {
+  getSizeProps,
+  generateSize,
+  generateRandomString,
+} from "~/utils/helpers";
 import Image from "../image";
 
 type OmitType =
@@ -44,6 +47,8 @@ function CarouselProduct({
 }: ICarouselProductProps) {
   const theme = useTheme();
   const { sizeProps, props } = getSizeProps(restProps);
+  const id = generateRandomString(8);
+
   return (
     <Box
       sx={{
@@ -61,18 +66,26 @@ function CarouselProduct({
             backgroundColor: "common.white",
             height: "60px",
             padding: "0 10px",
+            borderBottom: "2px solid",
+            borderColor: "primary.main",
           }}
-          component={Paper}
         >
           <Stack direction="row" alignItems="center" spacing="10px">
             {imgHeader && (
-              <Image src={imgHeader} alt="image" width={"40"} height={"40"} />
+              <Image
+                src={imgHeader}
+                alt="image"
+                width={"30"}
+                unitWidth="px"
+                height={"30"}
+                unitHeight="px"
+              />
             )}
             {title && (
               <Typography
                 variant="h3"
-                fontWeight={600}
-                fontSize={24}
+                fontWeight={500}
+                fontSize={16}
                 sx={{ color: "secondary.main", textTransform: "capitalize" }}
               >
                 {title}
@@ -87,13 +100,13 @@ function CarouselProduct({
               sx={{ color: "primary.main" }}
             >
               <Typography
-                fontSize={18}
+                fontSize={14}
                 fontWeight={500}
                 sx={{ color: "primary.main" }}
               >
                 Xem tất cả
               </Typography>
-              <LuArrowRightCircle size={24} />
+              <LuArrowRightCircle size={16} />
             </Stack>
           </Link>
         </Stack>
@@ -114,8 +127,8 @@ function CarouselProduct({
             [theme.breakpoints.values.lg]: { slidesPerView: 5 },
           }}
           navigation={{
-            nextEl: "#carousel-product-next",
-            prevEl: "#carousel-product-prev",
+            nextEl: `#carousel-product-next-${id}`,
+            prevEl: `#carousel-product-prev-${id}`,
           }}
           modules={[Navigation, Autoplay]}
           loop
@@ -138,13 +151,13 @@ function CarouselProduct({
         </Swiper>
         {/* Navigation Next Button */}
         <Box
-          id="carousel-product-next"
+          id={`carousel-product-next-${id}`}
           sx={{
             position: "absolute",
             zIndex: 10,
             top: "50%",
             right: 0,
-            transform: "translate(50%, -50%)",
+            transform: "translate(10%, -50%)",
           }}
         >
           <IconButton
@@ -152,7 +165,7 @@ function CarouselProduct({
               width: "35px",
               height: "35px",
               backgroundColor: "white",
-              boxShadow: "0 0 5px 0px #00000055",
+              boxShadow: "0 0 5px 0px #00000033",
               color: "primary.main",
               padding: 0,
               "&:hover": {
@@ -165,13 +178,13 @@ function CarouselProduct({
         </Box>
         {/* Navigation Previous Button */}
         <Box
-          id="carousel-product-prev"
+          id={`carousel-product-prev-${id}`}
           sx={{
             position: "absolute",
             zIndex: 10,
             top: "50%",
             left: 0,
-            transform: "translate(-50%, -50%)",
+            transform: "translate(-10%, -50%)",
           }}
         >
           <IconButton
@@ -179,7 +192,7 @@ function CarouselProduct({
               width: "35px",
               height: "35px",
               backgroundColor: "white",
-              boxShadow: "0 0 5px 0px #00000055",
+              boxShadow: "0 0 5px 0px #00000033",
               color: "primary.main",
               padding: 0,
               "&:hover": {

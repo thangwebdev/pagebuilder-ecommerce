@@ -29,7 +29,7 @@ export default async function DinamicPage({
 
   // return <RenderComponents components={data} />;
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "grey.100" }}>
       <Container maxWidth="xl">
         <Carousel />
         <Box sx={{ padding: "10px 0" }}>

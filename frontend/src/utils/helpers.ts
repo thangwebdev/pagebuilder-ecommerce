@@ -51,6 +51,8 @@ const generateSize = (
     borderTopRightRadius,
     borderBottomRightRadius,
     borderBottomLeftRadius,
+    textColor,
+    backgroundColor,
   }: {
     width?: string;
     height?: string;
@@ -76,6 +78,8 @@ const generateSize = (
     borderTopRightRadius?: string;
     borderBottomRightRadius?: string;
     borderBottomLeftRadius?: string;
+    textColor?: string;
+    backgroundColor?: string;
   },
   isBuilding?: boolean
 ) => {
@@ -121,6 +125,8 @@ const generateSize = (
     borderBottomLeftRadius: !!borderBottomLeftRadius
       ? `${borderBottomLeftRadius}px`
       : undefined,
+    color: !!textColor ? `#${textColor}` : undefined,
+    backgroundColor: !!backgroundColor ? `#${backgroundColor}` : undefined,
   };
 };
 
@@ -150,6 +156,8 @@ const getSizeProps = (obj: { [key: string]: any }) => {
     borderTopRightRadius = "",
     borderBottomRightRadius = "",
     borderBottomLeftRadius = "",
+    textColor,
+    backgroundColor,
     path,
     ...props
   } = obj;
@@ -179,6 +187,8 @@ const getSizeProps = (obj: { [key: string]: any }) => {
       borderTopRightRadius,
       borderBottomRightRadius,
       borderBottomLeftRadius,
+      textColor,
+      backgroundColor,
     },
     props,
   };

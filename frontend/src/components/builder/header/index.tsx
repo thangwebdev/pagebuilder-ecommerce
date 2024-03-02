@@ -68,7 +68,12 @@ export default function Header() {
           {/* Devices */}
           <Devices />
           {/* Actions */}
-          <Stack direction="row" spacing="10px">
+          <Stack
+            sx={{ flex: 1 }}
+            direction="row"
+            spacing="10px"
+            justifyContent="flex-end"
+          >
             {/* redo and undo */}
             <RedoUndo />
             {/* Refresh */}
